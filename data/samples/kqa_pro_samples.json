@@ -1,0 +1,935 @@
+[
+    {
+        "id": 0,
+        "question": "Tell me the person who is the screenwriter of Pleasantville  (the one that has Don Knotts as a cast member)",
+        "choices": [
+            "Richard Gere",
+            "Simon Cowell",
+            "William Henry Harrison",
+            "Sylvester Stallone",
+            "David Boreanaz",
+            "David Byrne",
+            "Rahul Dev Burman",
+            "Bruce Campbell",
+            "Gary Ross",
+            "Stephen Jackson"
+        ],
+        "program": [
+            {
+                "function": "Find",
+                "dependencies": [],
+                "inputs": [
+                    "Don Knotts"
+                ]
+            },
+            {
+                "function": "Relate",
+                "dependencies": [
+                    0
+                ],
+                "inputs": [
+                    "cast member",
+                    "backward"
+                ]
+            },
+            {
+                "function": "Find",
+                "dependencies": [],
+                "inputs": [
+                    "Pleasantville"
+                ]
+            },
+            {
+                "function": "And",
+                "dependencies": [
+                    1,
+                    2
+                ],
+                "inputs": []
+            },
+            {
+                "function": "Relate",
+                "dependencies": [
+                    3
+                ],
+                "inputs": [
+                    "screenwriter",
+                    "forward"
+                ]
+            },
+            {
+                "function": "FilterConcept",
+                "dependencies": [
+                    4
+                ],
+                "inputs": [
+                    "human"
+                ]
+            },
+            {
+                "function": "What",
+                "dependencies": [
+                    5
+                ],
+                "inputs": []
+            }
+        ],
+        "sparql": "SELECT DISTINCT ?e WHERE { ?e <pred:instance_of> ?c . ?c <pred:name> \"human\" . ?e_1 <screenwriter> ?e . ?e_1 <pred:name> \"Pleasantville\" . ?e_1 <cast_member> ?e_2 . ?e_2 <pred:name> \"Don Knotts\" .   }",
+        "answer": "Gary Ross",
+        "functions": [
+            "And",
+            "FilterConcept",
+            "Relate",
+            "Find",
+            "What"
+        ],
+        "set": "train"
+    },
+    {
+        "id": 1,
+        "question": "Who was educated at Phillips Exeter Academy and that has the occupation of lawyer ?",
+        "choices": [
+            "Lewis Cass",
+            "John Williams",
+            "Bill Nelson",
+            "John Irving",
+            "Edward Fox",
+            "Greg Daniels",
+            "Andrea Bocelli",
+            "John Milton",
+            "Robert Smith",
+            "Arthur Freed"
+        ],
+        "program": [
+            {
+                "function": "Find",
+                "dependencies": [],
+                "inputs": [
+                    "Phillips Exeter Academy"
+                ]
+            },
+            {
+                "function": "Relate",
+                "dependencies": [
+                    0
+                ],
+                "inputs": [
+                    "educated at",
+                    "backward"
+                ]
+            },
+            {
+                "function": "FilterConcept",
+                "dependencies": [
+                    1
+                ],
+                "inputs": [
+                    "human"
+                ]
+            },
+            {
+                "function": "Find",
+                "dependencies": [],
+                "inputs": [
+                    "lawyer"
+                ]
+            },
+            {
+                "function": "Relate",
+                "dependencies": [
+                    3
+                ],
+                "inputs": [
+                    "occupation",
+                    "backward"
+                ]
+            },
+            {
+                "function": "FilterConcept",
+                "dependencies": [
+                    4
+                ],
+                "inputs": [
+                    "human"
+                ]
+            },
+            {
+                "function": "And",
+                "dependencies": [
+                    2,
+                    5
+                ],
+                "inputs": []
+            },
+            {
+                "function": "What",
+                "dependencies": [
+                    6
+                ],
+                "inputs": []
+            }
+        ],
+        "sparql": "SELECT DISTINCT ?e WHERE { ?e <pred:instance_of> ?c . ?c <pred:name> \"human\" . ?e <educated_at> ?e_1 . ?e_1 <pred:name> \"Phillips Exeter Academy\" .  ?e <occupation> ?e_2 . ?e_2 <pred:name> \"lawyer\" .  }",
+        "answer": "Edward Fox",
+        "functions": [
+            "And",
+            "FilterConcept",
+            "Relate",
+            "Find",
+            "What"
+        ],
+        "set": "train"
+    },
+    {
+        "id": 2,
+        "question": "Who is the person that is Kylie Minogue's sibling?",
+        "choices": [
+            "Rick Baker",
+            "John Carpenter",
+            "Bobby",
+            "Sylvester Stallone",
+            "Max Fleischer",
+            "Michael Jackson",
+            "Richard Gere",
+            "William Henry Harrison",
+            "Shirley MacLaine",
+            "Dannii Minogue"
+        ],
+        "program": [
+            {
+                "function": "Find",
+                "dependencies": [],
+                "inputs": [
+                    "Kylie Minogue"
+                ]
+            },
+            {
+                "function": "Relate",
+                "dependencies": [
+                    0
+                ],
+                "inputs": [
+                    "sibling",
+                    "backward"
+                ]
+            },
+            {
+                "function": "FilterConcept",
+                "dependencies": [
+                    1
+                ],
+                "inputs": [
+                    "human"
+                ]
+            },
+            {
+                "function": "What",
+                "dependencies": [
+                    2
+                ],
+                "inputs": []
+            }
+        ],
+        "sparql": "SELECT DISTINCT ?e WHERE { ?e <pred:instance_of> ?c . ?c <pred:name> \"human\" . ?e <sibling> ?e_1 . ?e_1 <pred:name> \"Kylie Minogue\" .   }",
+        "answer": "Dannii Minogue",
+        "functions": [
+            "Find",
+            "What",
+            "FilterConcept",
+            "Relate"
+        ],
+        "set": "train"
+    },
+    {
+        "id": 3,
+        "question": "What was based on The Lion King (released in the USA)?",
+        "choices": [
+            "Battleship",
+            "Batman",
+            "RoboCop",
+            "Harry Potter and the Half-Blood Prince",
+            "Terminator 2: Judgment Day",
+            "The World Is Not Enough",
+            "music video game",
+            "Charlie's Angels",
+            "Medal of Honor",
+            "The Lion King"
+        ],
+        "program": [
+            {
+                "function": "Find",
+                "dependencies": [],
+                "inputs": [
+                    "United States of America"
+                ]
+            },
+            {
+                "function": "Relate",
+                "dependencies": [
+                    0
+                ],
+                "inputs": [
+                    "film release region",
+                    "backward"
+                ]
+            },
+            {
+                "function": "Find",
+                "dependencies": [],
+                "inputs": [
+                    "The Lion King"
+                ]
+            },
+            {
+                "function": "And",
+                "dependencies": [
+                    1,
+                    2
+                ],
+                "inputs": []
+            },
+            {
+                "function": "Relate",
+                "dependencies": [
+                    3
+                ],
+                "inputs": [
+                    "based on",
+                    "backward"
+                ]
+            },
+            {
+                "function": "FilterConcept",
+                "dependencies": [
+                    4
+                ],
+                "inputs": [
+                    "entertainment"
+                ]
+            },
+            {
+                "function": "What",
+                "dependencies": [
+                    5
+                ],
+                "inputs": []
+            }
+        ],
+        "sparql": "SELECT DISTINCT ?e WHERE { ?e <pred:instance_of> ?c . ?c <pred:name> \"entertainment\" . ?e <based_on> ?e_1 . ?e_1 <pred:name> \"The Lion King\" . ?e_1 <film_release_region> ?e_2 . ?e_2 <pred:name> \"United States of America\" .   }",
+        "answer": "The Lion King",
+        "functions": [
+            "And",
+            "FilterConcept",
+            "Relate",
+            "Find",
+            "What"
+        ],
+        "set": "train"
+    },
+    {
+        "id": 4,
+        "question": "Who is known for the new wave of European origin?",
+        "choices": [
+            "Jack Elam",
+            "Roger Birnbaum",
+            "Nick Cave and the Bad Seeds",
+            "Sergei Rachmaninoff",
+            "Robert Smith",
+            "Peter Gabriel",
+            "John Barrowman",
+            "Trey Anastasio",
+            "Nikolai Rimsky-Korsakov",
+            "Gary Numan"
+        ],
+        "program": [
+            {
+                "function": "Find",
+                "dependencies": [],
+                "inputs": [
+                    "Europe"
+                ]
+            },
+            {
+                "function": "Relate",
+                "dependencies": [
+                    0
+                ],
+                "inputs": [
+                    "country of origin",
+                    "backward"
+                ]
+            },
+            {
+                "function": "FilterConcept",
+                "dependencies": [
+                    1
+                ],
+                "inputs": [
+                    "new wave"
+                ]
+            },
+            {
+                "function": "Relate",
+                "dependencies": [
+                    2
+                ],
+                "inputs": [
+                    "famous people",
+                    "forward"
+                ]
+            },
+            {
+                "function": "FilterConcept",
+                "dependencies": [
+                    3
+                ],
+                "inputs": [
+                    "human"
+                ]
+            },
+            {
+                "function": "What",
+                "dependencies": [
+                    4
+                ],
+                "inputs": []
+            }
+        ],
+        "sparql": "SELECT DISTINCT ?e WHERE { ?e <pred:instance_of> ?c . ?c <pred:name> \"human\" . ?e_1 <famous_people> ?e . ?e_1 <pred:instance_of> ?c_1 . ?c_1 <pred:name> \"new wave\" . ?e_1 <country_of_origin> ?e_2 . ?e_2 <pred:name> \"Europe\" .   }",
+        "answer": "Gary Numan",
+        "functions": [
+            "Find",
+            "What",
+            "FilterConcept",
+            "Relate"
+        ],
+        "set": "train"
+    },
+    {
+        "id": 5,
+        "question": "Which organization is the production company of The King and I (the one whose production company is Morgan Creek Productions) ?",
+        "choices": [
+            "Morgan Creek Productions",
+            "School of American Ballet",
+            "Warner Home Video",
+            "Pfizer",
+            "McDonald's",
+            "World Bank",
+            "National Museum of Racing and Hall of Fame",
+            "Academy of Television Arts & Sciences",
+            "E. W. Scripps Company",
+            "Hamburger SV"
+        ],
+        "program": [
+            {
+                "function": "Find",
+                "dependencies": [],
+                "inputs": [
+                    "Morgan Creek Productions"
+                ]
+            },
+            {
+                "function": "Relate",
+                "dependencies": [
+                    0
+                ],
+                "inputs": [
+                    "production company",
+                    "backward"
+                ]
+            },
+            {
+                "function": "Find",
+                "dependencies": [],
+                "inputs": [
+                    "The King and I"
+                ]
+            },
+            {
+                "function": "And",
+                "dependencies": [
+                    1,
+                    2
+                ],
+                "inputs": []
+            },
+            {
+                "function": "Relate",
+                "dependencies": [
+                    3
+                ],
+                "inputs": [
+                    "production company",
+                    "forward"
+                ]
+            },
+            {
+                "function": "FilterConcept",
+                "dependencies": [
+                    4
+                ],
+                "inputs": [
+                    "organization"
+                ]
+            },
+            {
+                "function": "What",
+                "dependencies": [
+                    5
+                ],
+                "inputs": []
+            }
+        ],
+        "sparql": "SELECT DISTINCT ?e WHERE { ?e <pred:instance_of> ?c . ?c <pred:name> \"organization\" . ?e_1 <production_company> ?e . ?e_1 <pred:name> \"The King and I\" . ?e_1 <production_company> ?e_2 . ?e_2 <pred:name> \"Morgan Creek Productions\" .   }",
+        "answer": "Morgan Creek Productions",
+        "functions": [
+            "And",
+            "FilterConcept",
+            "Relate",
+            "Find",
+            "What"
+        ],
+        "set": "train"
+    },
+    {
+        "id": 7,
+        "question": "In which art school was Bob Clampett and Dorothy Jeakins educated?",
+        "choices": [
+            "National Institute of Dramatic Art",
+            "Camberwell College of Arts",
+            "Architectural Association School of Architecture",
+            "Pennsylvania Academy of the Fine Arts",
+            "Film and Television Institute of India",
+            "Chelsea College of Art and Design",
+            "Central Saint Martins",
+            "Columbia College Chicago",
+            "Otis College of Art and Design",
+            "Black Mountain College"
+        ],
+        "program": [
+            {
+                "function": "Find",
+                "dependencies": [],
+                "inputs": [
+                    "Bob Clampett"
+                ]
+            },
+            {
+                "function": "Relate",
+                "dependencies": [
+                    0
+                ],
+                "inputs": [
+                    "educated at",
+                    "forward"
+                ]
+            },
+            {
+                "function": "FilterConcept",
+                "dependencies": [
+                    1
+                ],
+                "inputs": [
+                    "art school"
+                ]
+            },
+            {
+                "function": "Find",
+                "dependencies": [],
+                "inputs": [
+                    "Dorothy Jeakins"
+                ]
+            },
+            {
+                "function": "Relate",
+                "dependencies": [
+                    3
+                ],
+                "inputs": [
+                    "educated at",
+                    "forward"
+                ]
+            },
+            {
+                "function": "FilterConcept",
+                "dependencies": [
+                    4
+                ],
+                "inputs": [
+                    "art school"
+                ]
+            },
+            {
+                "function": "And",
+                "dependencies": [
+                    2,
+                    5
+                ],
+                "inputs": []
+            },
+            {
+                "function": "What",
+                "dependencies": [
+                    6
+                ],
+                "inputs": []
+            }
+        ],
+        "sparql": "SELECT DISTINCT ?e WHERE { ?e <pred:instance_of> ?c . ?c <pred:name> \"art school\" . ?e_1 <educated_at> ?e . ?e_1 <pred:name> \"Bob Clampett\" .  ?e_2 <educated_at> ?e . ?e_2 <pred:name> \"Dorothy Jeakins\" .  }",
+        "answer": "Otis College of Art and Design",
+        "functions": [
+            "And",
+            "FilterConcept",
+            "Relate",
+            "Find",
+            "What"
+        ],
+        "set": "train"
+    },
+    {
+        "id": 8,
+        "question": "Which movie features the character of Alien (the one that presents in work Alien: Resurrection)?",
+        "choices": [
+            "The Towering Inferno",
+            "A Prairie Home Companion",
+            "Talk to Her",
+            "Alien",
+            "Rebecca",
+            "The Fifth Element",
+            "The Rose",
+            "Training Day",
+            "Pleasantville",
+            "The Three Musketeers"
+        ],
+        "program": [
+            {
+                "function": "Find",
+                "dependencies": [],
+                "inputs": [
+                    "Alien: Resurrection"
+                ]
+            },
+            {
+                "function": "Relate",
+                "dependencies": [
+                    0
+                ],
+                "inputs": [
+                    "present in work",
+                    "backward"
+                ]
+            },
+            {
+                "function": "Find",
+                "dependencies": [],
+                "inputs": [
+                    "Alien"
+                ]
+            },
+            {
+                "function": "And",
+                "dependencies": [
+                    1,
+                    2
+                ],
+                "inputs": []
+            },
+            {
+                "function": "Relate",
+                "dependencies": [
+                    3
+                ],
+                "inputs": [
+                    "characters",
+                    "backward"
+                ]
+            },
+            {
+                "function": "FilterConcept",
+                "dependencies": [
+                    4
+                ],
+                "inputs": [
+                    "film"
+                ]
+            },
+            {
+                "function": "What",
+                "dependencies": [
+                    5
+                ],
+                "inputs": []
+            }
+        ],
+        "sparql": "SELECT DISTINCT ?e WHERE { ?e <pred:instance_of> ?c . ?c <pred:name> \"film\" . ?e <characters> ?e_1 . ?e_1 <pred:name> \"Alien\" . ?e_1 <present_in_work> ?e_2 . ?e_2 <pred:name> \"Alien: Resurrection\" .   }",
+        "answer": "Alien",
+        "functions": [
+            "And",
+            "FilterConcept",
+            "Relate",
+            "Find",
+            "What"
+        ],
+        "set": "train"
+    },
+    {
+        "id": 9,
+        "question": "What is the action video whose narrative location was in France?",
+        "choices": [
+            "Spider-Man",
+            "Indiana Jones and the Temple of Doom",
+            "Medal of Honor",
+            "Spider-Man 3",
+            "Battleship",
+            "Rock Band 2",
+            "Batman",
+            "The Da Vinci Code",
+            "Iron Man",
+            "Harry Potter and the Half-Blood Prince"
+        ],
+        "program": [
+            {
+                "function": "Find",
+                "dependencies": [],
+                "inputs": [
+                    "France"
+                ]
+            },
+            {
+                "function": "Relate",
+                "dependencies": [
+                    0
+                ],
+                "inputs": [
+                    "narrative location",
+                    "backward"
+                ]
+            },
+            {
+                "function": "FilterConcept",
+                "dependencies": [
+                    1
+                ],
+                "inputs": [
+                    "video game"
+                ]
+            },
+            {
+                "function": "Find",
+                "dependencies": [],
+                "inputs": [
+                    "action game"
+                ]
+            },
+            {
+                "function": "Relate",
+                "dependencies": [
+                    3
+                ],
+                "inputs": [
+                    "genre",
+                    "backward"
+                ]
+            },
+            {
+                "function": "FilterConcept",
+                "dependencies": [
+                    4
+                ],
+                "inputs": [
+                    "video game"
+                ]
+            },
+            {
+                "function": "And",
+                "dependencies": [
+                    2,
+                    5
+                ],
+                "inputs": []
+            },
+            {
+                "function": "What",
+                "dependencies": [
+                    6
+                ],
+                "inputs": []
+            }
+        ],
+        "sparql": "SELECT DISTINCT ?e WHERE { ?e <pred:instance_of> ?c . ?c <pred:name> \"video game\" . ?e <narrative_location> ?e_1 . ?e_1 <pred:name> \"France\" .  ?e <genre> ?e_2 . ?e_2 <pred:name> \"action game\" .  }",
+        "answer": "The Da Vinci Code",
+        "functions": [
+            "And",
+            "FilterConcept",
+            "Relate",
+            "Find",
+            "What"
+        ],
+        "set": "train"
+    },
+    {
+        "id": 10,
+        "question": "Jurassic Park, authored by Michael Crichton, was a recipient at which Academy Awards event?",
+        "choices": [
+            "45th Academy Awards",
+            "66th Academy Awards",
+            "64th Academy Awards",
+            "Academy Award for Best Sound Editing",
+            "50th Academy Awards",
+            "Academy Award for Best Visual Effects",
+            "80th Academy Awards",
+            "43rd Academy Awards",
+            "25th Academy Awards",
+            "81st Academy Awards"
+        ],
+        "program": [
+            {
+                "function": "Find",
+                "dependencies": [],
+                "inputs": [
+                    "Michael Crichton"
+                ]
+            },
+            {
+                "function": "Relate",
+                "dependencies": [
+                    0
+                ],
+                "inputs": [
+                    "after a work by",
+                    "backward"
+                ]
+            },
+            {
+                "function": "Find",
+                "dependencies": [],
+                "inputs": [
+                    "Jurassic Park"
+                ]
+            },
+            {
+                "function": "And",
+                "dependencies": [
+                    1,
+                    2
+                ],
+                "inputs": []
+            },
+            {
+                "function": "Relate",
+                "dependencies": [
+                    3
+                ],
+                "inputs": [
+                    "award received",
+                    "forward"
+                ]
+            },
+            {
+                "function": "FilterConcept",
+                "dependencies": [
+                    4
+                ],
+                "inputs": [
+                    "Academy Awards ceremony"
+                ]
+            },
+            {
+                "function": "What",
+                "dependencies": [
+                    5
+                ],
+                "inputs": []
+            }
+        ],
+        "sparql": "SELECT DISTINCT ?e WHERE { ?e <pred:instance_of> ?c . ?c <pred:name> \"Academy Awards ceremony\" . ?e_1 <award_received> ?e . ?e_1 <pred:name> \"Jurassic Park\" . ?e_1 <after_a_work_by> ?e_2 . ?e_2 <pred:name> \"Michael Crichton\" .   }",
+        "answer": "66th Academy Awards",
+        "functions": [
+            "And",
+            "FilterConcept",
+            "Relate",
+            "Find",
+            "What"
+        ],
+        "set": "train"
+    },
+    {
+        "id": 11,
+        "question": "Tell me the person who died in the city with millions of inhabitants that is where Sharmila Tagore died.",
+        "choices": [
+            "Peter Falk",
+            "N. T. Rama Rao",
+            "Maximilian Schell",
+            "Paul Reubens",
+            "Rahul Dev Burman",
+            "Simon Cowell",
+            "Richard Gere",
+            "Max Fleischer",
+            "Sylvester Stallone",
+            "David Byrne"
+        ],
+        "program": [
+            {
+                "function": "Find",
+                "dependencies": [],
+                "inputs": [
+                    "Sharmila Tagore"
+                ]
+            },
+            {
+                "function": "Relate",
+                "dependencies": [
+                    0
+                ],
+                "inputs": [
+                    "place of birth",
+                    "forward"
+                ]
+            },
+            {
+                "function": "FilterConcept",
+                "dependencies": [
+                    1
+                ],
+                "inputs": [
+                    "city with millions of inhabitants"
+                ]
+            },
+            {
+                "function": "Relate",
+                "dependencies": [
+                    2
+                ],
+                "inputs": [
+                    "place of death",
+                    "backward"
+                ]
+            },
+            {
+                "function": "FilterConcept",
+                "dependencies": [
+                    3
+                ],
+                "inputs": [
+                    "human"
+                ]
+            },
+            {
+                "function": "What",
+                "dependencies": [
+                    4
+                ],
+                "inputs": []
+            }
+        ],
+        "sparql": "SELECT DISTINCT ?e WHERE { ?e <pred:instance_of> ?c . ?c <pred:name> \"human\" . ?e <place_of_death> ?e_1 . ?e_1 <pred:instance_of> ?c_1 . ?c_1 <pred:name> \"city with millions of inhabitants\" . ?e_2 <place_of_birth> ?e_1 . ?e_2 <pred:name> \"Sharmila Tagore\" .   }",
+        "answer": "N. T. Rama Rao",
+        "functions": [
+            "Find",
+            "What",
+            "FilterConcept",
+            "Relate"
+        ],
+        "set": "train"
+    }
+]
