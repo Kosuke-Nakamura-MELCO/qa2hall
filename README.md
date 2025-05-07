@@ -1,6 +1,9 @@
 # QA2HALL: A Framework for Generating Non-trivial Hallucination Detection Datasets from KGQA Datasets
 
-The flamework introduced in "QA2HALL: A Framework for Generating Non-trivial Hallucination Detection Datasets from KGQA Datasets."
+The flamework introduced in "QA2HALL: A Framework for Generating Non-trivial Hallucination Detection Datasets from KGQA Datasets."  
+The dataset created using this framework for the experiments in our paper is available on Zenodo:  
+https://doi.org/10.5281/zenodo.15278336
+
 
 ## Overview
 QA2HALL framework constructs a hallucination detection dataset based on a KGQA (Knolwedge Graph Question Answering) dataset in the following 4 steps.
@@ -34,10 +37,10 @@ Run the following command to get incorrect answers and declarative sentences.
 ```sh
 python run.py -q ./data/samples/kqa_pro_samples.json -o ./data/samples -m gemma2_9B_inst --kg_path ./data/kqa_pro/kb.json  --num_example 2
 ```
-You will get `incorrect_answers.tsv` and `declarative_sentencs.tsv` in `./data/samples`. 
+ The files `incorrect_answers.tsv` and `declarative_sentences.tsv` will be generated in `./data/samples`.
 
 ### Step 3.
-Manually annotate quality label for each row of the two tsv files obtained in the previous step.  
+Manually annotate ``quality`` label for each row of the two tsv files obtained in the previous step.  
 By default, samples with quality than 0 will be used in the next step.  
 After that, place them into `./data/samples/annotated`.
 
@@ -45,8 +48,9 @@ After that, place them into `./data/samples/annotated`.
 Run the following command to output hallucination detection dataset from the incorrect answers and the declarative sentences.
 
 ```sh
-python run.py --ans_path ./data/samples/annotated/incorrect_answers.tsv --dec_sent_path ./data/samples/annotated/declarative_sentences.tsv -o ./data/sample --replace_step
+python run.py --ans_path ./data/samples/annotated/incorrect_answers.tsv --dec_sent_path ./data/samples/annotated/declarative_sentences.tsv -o ./data/samples --replace_step
 ```
+Then, `dataset.json` will be generated in `./data/samples`
 
 ## Citation
 TBD
